@@ -65,7 +65,9 @@
                     <xsl:copy-of select="$navbar"/>
                     <h1 style="text-align: center;">Édition numérique d'un <em><xsl:value-of select="//titleStmt/title"/></em></h1>
                     <h2>Le document est conservé aux <em><xsl:value-of select="//msIdentifier/institution"/></em> sous la cote <em><xsl:value-of select="//msIdentifier/idno"/></em>.</h2>
-                    <div>Ce document contient des mentions des villes de <em><xsl:for-each select="//body/p/placeName"><xsl:value-of select="."/>, </xsl:for-each></em></div>
+                    <div>Ce document contient des mentions des villes de <em><xsl:for-each select="distinct-values(//body/p/placeName/@ref)">
+                        <xsl:value-of select="."/>, </xsl:for-each></em></div>
+                    <!-- On peut utiliser les attributs pour ne sélectionner qu'une fois chaque ville par son identifiant, malheureusement les personnes n'ont pas d'attribut ref donc faire la même chose est impossible dans leur cas -->
                     <div>Ce document contient des mentions des personnes : <em><xsl:for-each select="//body/p/persName"><xsl:value-of select="."/>, </xsl:for-each></em></div>
                     <p><em><xsl:value-of select="//body/p"/></em></p>
                     <xsl:copy-of select="$footer"/>
