@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model  href="out/odd_collioure.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Police d'un chargement à destination de Monsieur Roussié de Collioure</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Encoded by Fantin Le Ber, as part of his final assignement for his M2 TNAH XML class <date when= "2025"/></p>
+            
+         </publicationStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier><institution>AD 66</institution><idno>3B161</idno></msIdentifier>
+               <history><p>The 3B16-1 folder of the AD66 contains the archives collected at the Amiralty of Collioure about the sinking of the tartane St Jean St Vincent in January 1740. For that reason all the "polices de chargement", and documents contained in that folder are signed by the Amiralty authorities, i.e. the Sieur Balanda-Sicart, "contrôleur général" of the admiralty</p></history>
+               <physDesc>
+                  <p> The source is a police de chargement, on which are mentionned the conditions through which some goods will be transported from Marseille to Collioure </p> </physDesc></msDesc>
+            <listPlace>
+               <place>
+                  <placeName xml:id ="Mars">Marseille</placeName></place>
+               <place><placeName xml:id = "Coll">Collioure</placeName></place>
+               <place><placeName xml:id = "Can">Canet</placeName></place>
+               <place><placeName xml:id = "ML">Mont-Louis</placeName></place></listPlace>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>Jesus, Maria, Joseph. A <placeName ref="Mar">Marseille</placeName> le <date>23 décembre 1739</date>.
+            <lb/> A Esté chargé au Nom de Dieu, &amp; de bon sauvement, au Port &amp;
+            Havre <lb/> de cette Ville, par <persName><abbr type="title">Mr
+               </abbr>Seimandy</persName> et pour compte de <persName><abbr type="title"
+               >M</abbr>Roussie</persName> de <placeName ref="Coll">Collioure</placeName><lb/> sur
+            la tartane nommée <name type="boat">St Jean St Vincent</name> commandé <lb/> par<persName>
+               <abbr type="title">Cpn</abbr>Sebastien Grenier</persName> pour porter &amp; conduire,
+            Dieu <lb/> aidant, à <placeName ref="Coll">Collioure</placeName> &amp; consigner à
+                  <persName><abbr type="title">M</abbr>Roussié</persName><lb/> ou qui pour luy sera
+            les Marchandises cy-après:Sçavoir: <lb/> 44 <abbr type="brevigraph"/> je dis quarante
+            quatre Balles Marue provenant de la peche françoise <lb/> suivant le certificat cy
+            attaché <unclear> pesant née pecès de cette ville</unclear><lb/> Cent ving neuf
+            quinteaux quarante huis livre <abbr type="brevigraph"/>
+            <abbr type="contraction">lb</abbr> 12948 <lb/> 2 <abbr type="brevigraph"/>je dis 2
+            cousses ris du levant <unclear>pesant nés pescès de cette ville</unclear><lb/> quatre
+            cents trente huis livres <abbr type="brevigraph"/><abbr type="contraction"
+            >lb</abbr>438<lb/> 3 <abbr type="brevigraph"/> je dis trois balles cordailles <abbr
+               type="brevigraph"/> 3<lb/> Lesquelles susdites Marchandises ont été chargées sur la
+               <abbr type="supension">d</abbr>tartane <lb/> bien conditionnées &amp; marquées de la
+            marque ci-contre : qu'ainsi reçues que <lb/> seront, Dieu aidant , audit <placeName
+               ref="Coll">Colioure</placeName> par le <abbr type="contraction"
+                  >dt</abbr><persName><abbr type="title">S</abbr>Roussié</persName><lb/> ou quoi
+            pour luy sera, sans y avoir rien de mouillé ni de gâté payera de nolis <lb/> Seize sols
+            par quintal sans autre <abbr type="brevigraph"/>
+         </p>
+      </body>
+   </text>
+</TEI>

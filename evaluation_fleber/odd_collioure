@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="short">Polices de chargements (France, XVIIIth century)</title>
+                <title>ODD documents generated via the ODD by example xslt stylsheet, from the XML TEI encoding of French XVIIIth century polices de chargements</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Realized for the final assignement of the M2 TNAH XML TEI class, and published on github</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Derived from <ref target="https://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml">base odd</ref> after an analysis of 1 files in ./</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <head>Guide for the encoding of French "polices de chargement", specificaly the ones delivered by the Marseille harbor authorities in the mid XVIIIth century</head>
+                
+                <p>The idea of this encoding is to cumulate structured indications about the informations contained in the text, and about what is lacking or could not be read.</p>
+                <p> First of all, we use a <placeName/> label, with an authority list associated in our header, using a custm made "key" attribute, to study the trade routes, and dodge the common orthographic variations that could occur in the XVIIIth century. We added to that a rule that forced the encoding to constraint a minimum of one <placeName/> in the place element, to make sure, people would not associate two different places with the same key. The use of a list might also allow for some incorporations of wikidata authority notices or else.</p>
+                <p>Ideally, we would do the same with the <persName/> label, but it would require defining more precisely a limited list of people we are studying, which would have lacked interest on the small sample encoded for the sake of this exercice.
+                    The same way than for places, in the eventuality of famous people appearing in the text, the authority list could incorporate some wikidata links or other outside databases. 
+                    We decided to include the titles given to people in the <persName/> wether they use an <abbr/> or not. Title were very important in the XVIIIth century France, so they represent a very valuable information on people, and were therefore included.</p>
+                <p>In our sample we included some <unclear/> and <damage/> labels because we used mid-quality images that we could not always decypher, and one of the documents occured to be missing its right extremity. These uses are by-the-book XML TEI, but hopefully would not occur too often in the case of a larger, more organized study.</p>
+                <p> eventualy, we used a great deal of <abbr/> labels, because the documents contained a great deal of abbreviations. We noted the type of abbreviation but did not establish translation of the said abbreviation. The type of abbreviations was inspired by TEI guidelines examples, but we added a rule to constraint it.
+                    We did so because we saw our work like a study on people and places, which have very clear and normalized abreviation (Sr for Sieur, Cpn for capitaine ...), but in the case of a study that would have been more focused on the goods carried by the boats, and their monetary values,it would have been useful to mention the meaning of the numerous measure units or monneys that appear in these documents.</p>
+            </div>
+            <div>
+                <head> Schema</head>
+            <schemaSpec ident="oddbyexample" start="TEI ">
+                
+                <moduleRef key="tei"></moduleRef>
+                <!--Checking module textcrit-->
+                <classRef key="att.textCritical"></classRef>
+                <classRef key="model.rdgLike"></classRef>
+                <classRef key="model.rdgPart"></classRef>
+                <classSpec ident="att.textCritical" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                        <attDef ident="cause" mode="delete"></attDef>
+                        <attDef ident="varSeq" mode="delete"></attDef>
+                        <attDef ident="require" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <!--Checking module msdescription-->
+                <classRef key="model.physDescPart"></classRef>
+                <moduleRef key="msdescription" include="msDesc msIdentifier history physDesc institution signatures"/>
+                
+                <moduleRef key="model.choicePart"></moduleRef>
+                
+                
+                <!--Checking module namesdates-->
+                <classRef key="model.persNamePart"></classRef>
+                <moduleRef key="namesdates"
+                    include="persName placeName geo listPerson listPlace location person place "></moduleRef>
+                <elementSpec ident="persName" mode="change">
+                    <attList>
+                        <attDef ident="calendar" mode="delete"></attDef>
+                        <attDef ident="when" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="placeName" mode="change" module="namesdate">
+                        
+                    <attList>
+                        <attDef ident="calendar" mode="delete"></attDef>
+                        <attDef ident="when" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                        
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="listPerson" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="listPlace" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="location" mode="change">
+                    <attList>
+                        <attDef ident="calendar" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                        <attDef ident="when" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="person" mode="change">
+                    <attList>
+                        <attDef ident="role" mode="delete"></attDef>
+                        <attDef ident="sex" mode="delete"></attDef>
+                        <attDef ident="gender" mode="delete"></attDef>
+                        <attDef ident="age" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="place" mode="change">
+                    <content><elementRef key="placeName" minOccurs="1"/></content>
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <!--Checking module dictionaries-->
+                <classRef key="att.lexicographic"></classRef>
+                <classRef key="model.entryLike"></classRef>
+                <classRef key="model.formPart"></classRef>
+                <classRef key="model.gramPart"></classRef>
+                <classRef key="model.lexicalRefinement"></classRef>
+                <classRef key="model.morphLike"></classRef>
+                <classRef key="model.ptrLike.form"></classRef>
+                <classSpec ident="att.lexicographic" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="expand" mode="delete"></attDef>
+                        <attDef ident="split" mode="delete"></attDef>
+                        <attDef ident="value" mode="delete"></attDef>
+                        <attDef ident="location" mode="delete"></attDef>
+                        <attDef ident="mergedIn" mode="delete"></attDef>
+                        <attDef ident="opt" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <!--Checking module tagdocs-->
+                <classRef key="att.combinable"></classRef>
+                <classRef key="att.identified"></classRef>
+                <classRef key="model.contentPart"></classRef>
+                <classSpec ident="att.combinable" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="mode" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.identified" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="ident" mode="delete"></attDef>
+                        <attDef ident="predeclare" mode="delete"></attDef>
+                        <attDef ident="module" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.ascribed.directed" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="toWhom" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.canonical" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="key" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.dimensions" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="unit" mode="delete"></attDef>
+                        <attDef ident="quantity" mode="delete"></attDef>
+                        <attDef ident="extent" mode="delete"></attDef>
+                        <attDef ident="precision" mode="delete"></attDef>
+                        <attDef ident="scope" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.damaged" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="agent" mode="delete"></attDef>
+                        <attDef ident="degree" mode="delete"></attDef>
+                        <attDef ident="group" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.datable.w3c" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="notBefore" mode="delete"></attDef>
+                        <attDef ident="notAfter" mode="delete"></attDef>
+                        <attDef ident="from" mode="delete"></attDef>
+                        <attDef ident="to" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.datable" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="period" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.divLike" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="org" mode="delete"></attDef>
+                        <attDef ident="sample" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.media" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="width" mode="delete"></attDef>
+                        <attDef ident="height" mode="delete"></attDef>
+                        <attDef ident="scale" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.naming" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="role" mode="delete"></attDef>
+                        <attDef ident="nymRef" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.typed" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="subtype" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.pointing" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="targetLang" mode="delete"></attDef>
+                        <attDef ident="evaluate" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.pointing.group" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="domains" mode="delete"></attDef>
+                        <attDef ident="targFunc" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.segLike" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="function" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.timed" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="start" mode="delete"></attDef>
+                        <attDef ident="end" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.transcriptional" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="status" mode="delete"></attDef>
+                        <attDef ident="cause" mode="delete"></attDef>
+                        <attDef ident="seq" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <classSpec ident="att.personal" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="full" mode="delete"></attDef>
+                        <attDef ident="sort" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <!--Checking module core-->
+                <moduleRef key="core" include="elemdesc num date title abbr lb unclear name p"></moduleRef>
+               
+                <elementSpec ident="abbr" mode="change" module="core">
+                    <desc> We added here a typology for the abbreviations</desc>
+                    <attList>
+                        <attDef  ident = "type" mode ="replace">
+                            <valList type="closed">
+                                <valItem ident ="supension"/>
+                                <valItem ident="contraction"/>
+                                <valItem ident="brevigraph"/>
+                                <valItem ident="superscription"/>
+                                <valItem ident="acronym"/>
+                                <valItem ident="title"/>
+                                <valItem ident="organization"/>
+                                <valItem ident="geographic"/>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                
+             
+                <elementSpec ident="desc" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="num" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="ship"></valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="type" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="ship"></valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="date" mode="change">
+                    <attList>
+                        <attDef ident="ref" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="title" mode="change">
+                    <attList>
+                        <attDef ident="calendar" mode="delete"></attDef>
+                        <attDef ident="level" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                        <attDef ident="ref" mode="delete"></attDef>
+                        <attDef ident="when" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <!--Checking module figures-->
+                <!--Checking module header-->
+                <moduleRef key="header"
+                    include="teiHeader fileDesc titleStmt publicationStmt authority availability licence sourceDesc idno"></moduleRef>
+                <elementSpec ident="authority" mode="change">
+                    <attList>
+                        <attDef ident="ref" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="availability" mode="change">
+                    <attList>
+                        <attDef ident="status" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="free"></valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="licence" mode="change">
+                    <attList>
+                        <attDef ident="calendar" mode="delete"></attDef>
+                        <attDef ident="when" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <!--Checking module gaiji-->
+                <classRef key="att.gaijiProp"></classRef>
+                <classSpec ident="att.gaijiProp" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="name" mode="delete"></attDef>
+                        <attDef ident="value" mode="delete"></attDef>
+                        <attDef ident="version" mode="delete"></attDef>
+                        <attDef ident="scheme" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <!--Checking module verse-->
+                <!--Checking module transcr-->
+                <moduleRef key="transcr" include="damage"/>
+                <!--Checking module linking-->
+                <!--Checking module analysis-->
+                <classRef key="att.linguistic"></classRef>
+                <elementSpec ident="s" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <classSpec ident="att.linguistic" type="atts" mode="change">
+                    <attList>
+                        <attDef ident="lemma" mode="delete"></attDef>
+                        <attDef ident="lemmaRef" mode="delete"></attDef>
+                        <attDef ident="pos" mode="delete"></attDef>
+                        <attDef ident="msd" mode="delete"></attDef>
+                        <attDef ident="join" mode="delete"></attDef>
+                    </attList>
+                </classSpec>
+                <!--Checking module textstructure-->
+                <moduleRef key="textstructure" include="TEI text body div"></moduleRef>
+                <elementSpec ident="TEI" mode="change">
+                    <attList>
+                        <attDef ident="version" mode="delete"></attDef>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="text" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="delete"></attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="div" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="chapter"></valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                
+            </schemaSpec>
+                </div>
+        </body>
+    </text>
+</TEI>

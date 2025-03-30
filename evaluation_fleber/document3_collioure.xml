@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model  href="out/odd_collioure.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Police d'un chargement à destination de Monsieur Roussié de Collioure</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Encoded by Fantin Le Ber, as part of his final assignement for his M2 TNAH XML class <date when= "2025"/></p>
+            
+         </publicationStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier><institution>AD 66</institution><idno>3B161</idno></msIdentifier>
+               <history><p>The 3B16-1 folder of the AD66 contains the archives collected at the Amiralty of Collioure about the sinking of the tartane St Jean St Vincent in January 1740. For that reason all the "polices de chargement", and documents contained in that folder are signed by the Amiralty authorities, i.e. the Sieur Balanda-Sicart, "contrôleur général" of the admiralty</p></history>
+               <physDesc>
+                  <p> The source is a police de chargement, on which are mentionned the conditions through which some goods will be transported from Marseille to Collioure </p> </physDesc></msDesc>
+            <listPlace>
+               <place>
+                  <placeName xml:id ="Mars">Marseille</placeName></place>
+               <place><placeName xml:id = "Coll">Collioure</placeName></place>
+               <place><placeName xml:id = "Can">Canet</placeName></place>
+               <place><placeName xml:id = "ML">Mont-Louis</placeName></place></listPlace>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+  <text>
+      <body>
+         <p>Jesus, Maria, Joseph. A <placeName ref="Mars"> Marseille</placeName> le <date>31 <abbr type ="contraction">dbre</abbr></date><damage/><lb/>
+         Il a été chargé, au Port &amp; Havre de cette Ville, par le<damage/><lb/>
+         Paillez, et pour compte de <persName><abbr type = "title">mr</abbr>Raymond Rey</persName><lb/>
+         sur la tartane apellée <name type = "boat"> St Jean &amp; St Vincent</name><damage/><lb/>
+         par <persName>patron Sebastien Grenier</persName> pour porter &amp; cond<damage/><lb/>
+         aidant, à <placeName ref="Can">Canet</placeName>&amp; consigner à <persName><abbr type ="title">ms</abbr>Mautet</persName>à <placeName ref ="Can">Can</placeName><damage/><lb/>
+         ou qui pour luy sera les Marchandises c après : Sçavoir,<lb/>
+         10 balles morues <unclear> Me 1 av port mer</unclear><damage/><lb/>
+         1 un barril figues de <placeName>Calabre</placeName><unclear>n°11 part nui <abbr type = "brevigraph"/>134 umer</unclear><damage/><lb/>
+         6 cousses ris <unclear>N° 12 n° part part. bru <abbr type = "brevigraph"/>1345 enver</unclear><damage/><lb/>
+         1 balle amandes <unclear>N°13. part, sur</unclear><damage/><lb/>
+         1 caisse amidon <unclear>N°18 part. bru <abbr type="brevigraph"/> 138 enver</unclear><damage/><lb/>
+         1 caisse fromage <unclear> N°19 pest sur</unclear><damage/><lb/>
+         Lesquelles ayant été reçues bien &amp; dûëment conditionnées par l<damage/><lb/>
+         ou qui pour luy sera payera de nolis quatorze sols par <damage/>
+                     
+         </p>
+      </body>
+  </text>
+</TEI>
